@@ -26,4 +26,12 @@ def top_construct(dr, limit, delay):
 
 
 while True:
-    top_construct(1, 10000, 0.0001)
+    print("Start move forward")
+    top_construct(1, 1000, 0.0001)
+    print("End move")
+
+    sleep(5)
+
+    print("Start move back")
+    top_construct(2, 1000, 0.0001)
+    print("End move")
