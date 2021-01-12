@@ -1,14 +1,14 @@
-import gpiozero
+from gpiozero import OutputDevice as Stepper
 from time import sleep
 
-DR1 = gpiozero.DigitalOutputDevice(14)
-PL1 = gpiozero.DigitalOutputDevice(15)
+DR1 = Stepper(14)
+PL1 = Stepper(15)
 
-DR2 = gpiozero.DigitalOutputDevice(17)
-PL2 = gpiozero.DigitalOutputDevice(18)
+DR2 = Stepper(17)
+PL2 = Stepper(18)
 
 
-def top_construct(dr, limit, delay):
+def top_construct(dr, duration=5000, delay=0.0000001):
     if dr == 1:
         DR1.on()
         DR2.off()
@@ -16,7 +16,7 @@ def top_construct(dr, limit, delay):
         DR1.off()
         DR2.on()
 
-    for i in range(limit):
+    for i in range(duration):
         PL1.on()
         PL2.on()
         sleep(delay)
@@ -27,11 +27,11 @@ def top_construct(dr, limit, delay):
 
 while True:
     print("Start move forward")
-    top_construct(1, 1000, 0.0001)
+    top_construct(1)
     print("End move")
 
     sleep(5)
 
     print("Start move back")
-    top_construct(2, 1000, 0.0001)
+    top_construct(2)
     print("End move")
