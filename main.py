@@ -3,13 +3,13 @@ from gpiozero import PWMOutputDevice
 from time import sleep
 
 DR1 = OutputDevice(14)
-PL1 = PWMOutputDevice(15)
+PL1 = PWMOutputDevice(15, True, 0, 200000)
 
 DR2 = OutputDevice(17)
-PL2 = PWMOutputDevice(18)
+PL2 = PWMOutputDevice(18, True, 0, 200000)
 
 
-def top_construct(dr, duration=5000, delay=0.0000001):
+def top_construct(dr, duration=5000, delay=0.0001):
     if dr == 1:
         DR1.on()
         DR2.off()
