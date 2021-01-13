@@ -1,11 +1,12 @@
-from gpiozero import OutputDevice as Stepper
+from gpiozero import OutputDevice
+from gpiozero import PWMOutputDevice
 from time import sleep
 
-DR1 = Stepper(14)
-PL1 = Stepper(15)
+DR1 = OutputDevice(14)
+PL1 = PWMOutputDevice(15)
 
-DR2 = Stepper(17)
-PL2 = Stepper(18)
+DR2 = OutputDevice(17)
+PL2 = PWMOutputDevice(18)
 
 
 def top_construct(dr, duration=5000, delay=0.0000001):
@@ -16,13 +17,8 @@ def top_construct(dr, duration=5000, delay=0.0000001):
         DR1.off()
         DR2.on()
 
-    for i in range(duration):
-        PL1.on()
-        PL2.on()
-        sleep(delay)
-        PL1.off()
-        PL2.off()
-        sleep(delay)
+    PL1.pulse(delay, delay, duration)
+    PL2.pulse(delay, delay, duration)
 
 
 while True:
