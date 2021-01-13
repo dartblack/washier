@@ -9,7 +9,7 @@ DR2 = OutputDevice(17)
 PL2 = PWMOutputDevice(18, True, 0, 100000)
 
 
-def top_construct(dr, duration=5000, delay=0.0001):
+def top_construct(dr, duration=5000, delay=0.00001):
     if dr == 1:
         DR1.on()
         DR2.off()
