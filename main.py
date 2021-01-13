@@ -3,10 +3,10 @@ from gpiozero import PWMOutputDevice
 from time import sleep
 
 DR1 = OutputDevice(14)
-PL1 = PWMOutputDevice(15, True, 0, 200000)
+PL1 = PWMOutputDevice(15, True, 0, 100000)
 
 DR2 = OutputDevice(17)
-PL2 = PWMOutputDevice(18, True, 0, 200000)
+PL2 = PWMOutputDevice(18, True, 0, 100000)
 
 
 def top_construct(dr, duration=5000, delay=0.0001):
