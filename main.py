@@ -21,13 +21,6 @@ def top_construct(dr, duration=5000, delay=0.00001):
     PL2.pulse(delay, delay, duration)
 
 
-while True:
-    print("Start move forward")
-    top_construct(1)
-    print("End move")
-
-    sleep(5)
-
-    print("Start move back")
-    top_construct(2)
-    print("End move")
+print("Start move forward")
+top_construct(1)
+print("End move")
