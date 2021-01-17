@@ -16,11 +16,12 @@ def top_construct(dr, duration=5000, delay=0.00001):
     elif dr == 2:
         DR1.off()
         DR2.on()
-
-    PL1.pulse(delay, delay, duration)
-    PL2.pulse(delay, delay, duration)
+    for i in range(duration):
+        PL1.pulse(delay, delay)
+        PL2.pulse(delay, delay)
 
 
 print("Start move forward")
 top_construct(1)
+sleep(5)
 print("End move")
