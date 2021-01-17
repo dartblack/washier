@@ -17,11 +17,11 @@ def top_construct(dr, duration=100, delay=0.00001):
         DR2.on()
 
     for i in range(duration):
-        PL1.off()
-        PL2.off()
-        sleep(delay)
         PL1.on()
         PL2.on()
+        sleep(delay)
+        PL1.off()
+        PL2.off()
         sleep(delay)
 
 
