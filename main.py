@@ -8,9 +8,9 @@ PL1 = OutputDevice(15)
 DR2 = OutputDevice(17)
 PL2 = OutputDevice(18)
 
-sensor = [
-    InputDevice(27)
-]
+sensor = {
+    "sensor1": InputDevice(27)
+}
 
 
 def read_distance_sensor(index):
@@ -36,6 +36,6 @@ def top_construct(dr, duration=5000, delay=0.0000001):
 
 print("read distance")
 sleep(1)
-distance = read_distance_sensor(0)
+distance = read_distance_sensor("sensor1")
 sleep(1)
 print("distance: " + distance)
