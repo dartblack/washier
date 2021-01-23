@@ -1,4 +1,5 @@
 from gpiozero import OutputDevice
+from gpiozero import InputDevice
 from time import sleep
 
 DR1 = OutputDevice(14)
@@ -6,6 +7,14 @@ PL1 = OutputDevice(15)
 
 DR2 = OutputDevice(17)
 PL2 = OutputDevice(18)
+
+sensor = [
+    InputDevice(27)
+]
+
+
+def read_distance_sensor(index):
+    return sensor[index].value
 
 
 def top_construct(dr, duration=5000, delay=0.0000001):
@@ -25,6 +34,8 @@ def top_construct(dr, duration=5000, delay=0.0000001):
         sleep(delay)
 
 
-print("Start move forward")
-top_construct(1, 100000)
-print("End move")
+print("read distance")
+sleep(1)
+distance = read_distance_sensor(0)
+sleep(1)
+print("distance: " + distance)
