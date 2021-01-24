@@ -1,5 +1,5 @@
 from gpiozero import OutputDevice
-from gpiozero import InputDevice
+from gpiozero import SmoothedInputDevice
 from time import sleep
 
 DR1 = OutputDevice(14)
@@ -9,7 +9,7 @@ DR2 = OutputDevice(17)
 PL2 = OutputDevice(18)
 
 sensor = {
-    "sensor1": InputDevice(27)
+    "sensor1": SmoothedInputDevice(27)
 }
 
 
@@ -38,4 +38,4 @@ print("read distance")
 sleep(1)
 distance = read_distance_sensor("sensor1")
 sleep(1)
-print("distance: " + distance)
+print(distance)
