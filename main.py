@@ -1,5 +1,5 @@
 from gpiozero import OutputDevice
-from gpiozero import SmoothedInputDevice
+from gpiozero import DistanceSensor
 from time import sleep
 
 DR1 = OutputDevice(14)
@@ -9,7 +9,7 @@ DR2 = OutputDevice(17)
 PL2 = OutputDevice(18)
 
 sensor = {
-    "sensor1": SmoothedInputDevice(27)
+    "sensor1": DistanceSensor(echo=27, trigger=22, queue_len=30, max_distance=4)
 }
 
 
