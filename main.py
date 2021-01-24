@@ -14,7 +14,7 @@ sensor = {
 
 
 def read_distance_sensor(index):
-    return sensor[index].value
+    return sensor[index].distance * 100
 
 
 def top_construct(dr, duration=5000, delay=0.0000001):
