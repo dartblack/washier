@@ -64,6 +64,11 @@ print("Car direct width: " + str(car_direct_width) + " | Car side width: " + str
 print("--------------------------------------")
 
 print("Move to start positions")
-top_motor_control(1, (top_distance - kercher_distance) * pulse_to_cm)
+start_position_move = (top_distance - kercher_distance) * pulse_to_cm
+top_motor_control(1, start_position_move)
 
-top_motor_control(1, (car_direct_width + kercher_distance * 2) * pulse_to_cm)
+top_motor_move = (car_direct_width + kercher_distance * 2) * pulse_to_cm
+top_motor_control(1, top_motor_move)
+top_motor_control(2, top_motor_move)
+
+top_motor_control(2, start_position_move)
