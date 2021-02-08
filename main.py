@@ -1,5 +1,6 @@
 from gpiozero import OutputDevice
 from gpiozero import DistanceSensor
+from gpiozero import Button
 from time import sleep
 
 direct_width = 600
@@ -14,11 +15,24 @@ top_motor = {
     "PL2": OutputDevice(18)
 }
 
-DR1 = OutputDevice(14)
-PL1 = OutputDevice(15)
+middle_motor = {
+    "DR": OutputDevice(22),
+    "PL": OutputDevice(23)
+}
 
-DR2 = OutputDevice(17)
-PL2 = OutputDevice(18)
+side_motor = {
+    "DR": OutputDevice(24),
+    "PL": OutputDevice(25)
+}
+
+safe_sensors = {
+    "1.1": Button(5),
+    "1.2": Button(6),
+    "2.1": Button(12),
+    "2.2": Button(13),
+    "3.1": Button(19),
+    "3.2": Button(20)
+}
 
 sensor = {
     "top_sensor": DistanceSensor(echo=27, trigger=22, queue_len=30, max_distance=4),
@@ -37,7 +51,7 @@ def top_motor_control(dr, duration=10, delay=0.0000001):
         top_motor["DR1"].on()
         top_motor["DR2"].off()
     elif dr == 2:
-        top_motor["DR1"].off()
+        middle_motor["DR1"].off()
         top_motor["DR2"].on()
 
     for i in range(duration):
@@ -47,6 +61,41 @@ def top_motor_control(dr, duration=10, delay=0.0000001):
         top_motor["PL1"].off()
         top_motor["PL2"].off()
         sleep(delay)
+
+
+def middle_motor_control(dr, duration=10, delay=0.0000001):
+    if dr == 1:
+        middle_motor["DR"].on()
+    elif dr == 2:
+        middle_motor["DR"].off()
+
+    for i in range(duration):
+        middle_motor["PL"].on()
+        sleep(delay)
+        middle_motor["PL"].off()
+        sleep(delay)
+
+
+def side_motor_control(dr, duration=10, delay=0.0000001):
+    if dr == 1:
+        side_motor["DR"].on()
+    elif dr == 2:
+        side_motor["DR"].off()
+
+    for i in range(duration):
+        side_motor["PL"].on()
+        sleep(delay)
+        side_motor["PL"].off()
+        sleep(delay)
+
+
+def construct_calibration():
+    while not safe_sensors["1.1"].is_active:
+        top_motor_control(1, 1)
+    while not safe_sensors["2.1"].is_active:
+        middle_motor_control(1, 1)
+    while not safe_sensors["3.1"].is_active:
+        side_motor_control(1, 1)
 
 
 print("start...")
