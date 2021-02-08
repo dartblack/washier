@@ -34,6 +34,7 @@ safe_sensors = {
     "3.2": Button(20)
 }
 
+
 # sensor = {
 #     "top_sensor": DistanceSensor(echo=27, trigger=22, queue_len=30, max_distance=4),
 #     "back_sensor": DistanceSensor(echo=23, trigger=24, queue_len=30, max_distance=4),
@@ -50,11 +51,15 @@ def top_motor_control(dr, duration=10, delay=0.0000001):
     if dr == 1:
         top_motor["DR1"].on()
         top_motor["DR2"].off()
+        check = safe_sensors["1.1"]
     elif dr == 2:
-        middle_motor["DR1"].off()
+        top_motor["DR1"].off()
         top_motor["DR2"].on()
+        check = safe_sensors["1.2"]
 
     for i in range(duration):
+        if check.is_active:
+            break
         top_motor["PL1"].on()
         top_motor["PL2"].on()
         sleep(delay)
