@@ -34,16 +34,16 @@ safe_sensors = {
     "3.2": Button(20)
 }
 
-sensor = {
-    "top_sensor": DistanceSensor(echo=27, trigger=22, queue_len=30, max_distance=4),
-    "back_sensor": DistanceSensor(echo=23, trigger=24, queue_len=30, max_distance=4),
-    "left_sensor": DistanceSensor(echo=5, trigger=6, queue_len=30, max_distance=4),
-    "right_sensor": DistanceSensor(echo=13, trigger=19, queue_len=30, max_distance=4)
-}
-
-
-def read_distance_sensor(index):
-    return sensor[index].distance * 100
+# sensor = {
+#     "top_sensor": DistanceSensor(echo=27, trigger=22, queue_len=30, max_distance=4),
+#     "back_sensor": DistanceSensor(echo=23, trigger=24, queue_len=30, max_distance=4),
+#     "left_sensor": DistanceSensor(echo=5, trigger=6, queue_len=30, max_distance=4),
+#     "right_sensor": DistanceSensor(echo=13, trigger=19, queue_len=30, max_distance=4)
+# }
+#
+#
+# def read_distance_sensor(index):
+#     return sensor[index].distance * 100
 
 
 def top_motor_control(dr, duration=10, delay=0.0000001):
