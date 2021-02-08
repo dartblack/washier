@@ -99,25 +99,26 @@ def construct_calibration():
 
 
 print("start...")
+construct_calibration()
 
-top_distance = read_distance_sensor("top_sensor")
-back_distance = read_distance_sensor("back_sensor")
-car_direct_width = direct_width - top_distance - back_distance
-
-left_distance = read_distance_sensor("left_sensor")
-right_distance = read_distance_sensor("right_sensor")
-car_side_width = side_width - left_distance - right_distance
-print("Top distance: " + str(top_distance) + " | Back distance: " + str(back_distance))
-print("Car direct width: " + str(car_direct_width) + " | Car side width: " + str(car_side_width))
-
-print("--------------------------------------")
-
-print("Move to start positions")
-start_position_move = (top_distance - kercher_distance) * pulse_to_cm
-top_motor_control(1, start_position_move)
-
-top_motor_move = (car_direct_width + kercher_distance * 2) * pulse_to_cm
-top_motor_control(1, top_motor_move)
-top_motor_control(2, top_motor_move)
-
-top_motor_control(2, start_position_move)
+# top_distance = read_distance_sensor("top_sensor")
+# back_distance = read_distance_sensor("back_sensor")
+# car_direct_width = direct_width - top_distance - back_distance
+#
+# left_distance = read_distance_sensor("left_sensor")
+# right_distance = read_distance_sensor("right_sensor")
+# car_side_width = side_width - left_distance - right_distance
+# print("Top distance: " + str(top_distance) + " | Back distance: " + str(back_distance))
+# print("Car direct width: " + str(car_direct_width) + " | Car side width: " + str(car_side_width))
+#
+# print("--------------------------------------")
+#
+# print("Move to start positions")
+# start_position_move = (top_distance - kercher_distance) * pulse_to_cm
+# top_motor_control(1, start_position_move)
+#
+# top_motor_move = (car_direct_width + kercher_distance * 2) * pulse_to_cm
+# top_motor_control(1, top_motor_move)
+# top_motor_control(2, top_motor_move)
+#
+# top_motor_control(2, start_position_move)
