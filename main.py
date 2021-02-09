@@ -103,9 +103,9 @@ def side_motor_control(dr, duration=10, delay=0.0000001):
 
 
 def construct_calibration():
-    top_motor_control(1, 100000)
-    middle_motor_control(1, 100000)
-    side_motor_control(1, 100000)
+    top_motor_control(1, 1000000)
+    middle_motor_control(1, 1000000)
+    side_motor_control(1, 1000000)
 
 
 print("start...")
