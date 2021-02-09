@@ -48,10 +48,10 @@ safe_sensors = {
 
 
 def top_motor_control(dr, duration=10, delay=0.0000001):
+    check = safe_sensors["1.1"]
     if dr == 1:
         top_motor["DR1"].on()
         top_motor["DR2"].off()
-        check = safe_sensors["1.1"]
     elif dr == 2:
         top_motor["DR1"].off()
         top_motor["DR2"].on()
@@ -69,12 +69,16 @@ def top_motor_control(dr, duration=10, delay=0.0000001):
 
 
 def middle_motor_control(dr, duration=10, delay=0.0000001):
+    check = safe_sensors["2.1"]
     if dr == 1:
         middle_motor["DR"].on()
     elif dr == 2:
         middle_motor["DR"].off()
+        check = safe_sensors["2.2"]
 
     for i in range(duration):
+        if check.is_active:
+            break
         middle_motor["PL"].on()
         sleep(delay)
         middle_motor["PL"].off()
@@ -82,12 +86,16 @@ def middle_motor_control(dr, duration=10, delay=0.0000001):
 
 
 def side_motor_control(dr, duration=10, delay=0.0000001):
+    check = safe_sensors["3.1"]
     if dr == 1:
         side_motor["DR"].on()
     elif dr == 2:
         side_motor["DR"].off()
+        check = safe_sensors["3.2"]
 
     for i in range(duration):
+        if check.is_active:
+            break
         side_motor["PL"].on()
         sleep(delay)
         side_motor["PL"].off()
@@ -95,12 +103,9 @@ def side_motor_control(dr, duration=10, delay=0.0000001):
 
 
 def construct_calibration():
-    while not safe_sensors["1.1"].is_active:
-        top_motor_control(1, 1)
-    while not safe_sensors["2.1"].is_active:
-        middle_motor_control(1, 1)
-    while not safe_sensors["3.1"].is_active:
-        side_motor_control(1, 1)
+    top_motor_control(1, 100000)
+    middle_motor_control(1, 100000)
+    side_motor_control(1, 100000)
 
 
 print("start...")
