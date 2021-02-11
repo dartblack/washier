@@ -108,10 +108,11 @@ def construct_calibration():
     side_motor_control(1, 1000000)
 
 
+test = DigitalInputDevice(16)
 print("start...")
 
 while True:
-    print(str(safe_sensors['2.1'].value))
+    print(str(test.value))
     sleep(0.5)
 
 # top_distance = read_distance_sensor("top_sensor")
