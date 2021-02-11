@@ -109,7 +109,7 @@ def construct_calibration():
 
 
 print("start...")
-side_motor_control(2, 100000, 0.001)
+middle_motor_control(2, 100000, 0.001)
 
 # top_distance = read_distance_sensor("top_sensor")
 # back_distance = read_distance_sensor("back_sensor")
