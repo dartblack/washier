@@ -68,7 +68,7 @@ def top_motor_control(dr, duration=10, delay=0.00001):
         sleep(delay)
 
 
-def middle_motor_control(dr, duration=10, delay=0.00001):
+def middle_motor_control(dr, duration=10, delay=0.0001):
     check = safe_sensors["2.1"]
     if dr == 1:
         middle_motor["DR"].on()
