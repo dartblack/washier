@@ -58,8 +58,8 @@ def top_motor_control(dr, duration=10, delay=0.0000001):
         check = safe_sensors["1.2"]
 
     for i in range(duration):
-        if check.is_active:
-            break
+        # if check.is_active:
+        #     break
         top_motor["PL1"].on()
         top_motor["PL2"].on()
         sleep(delay)
@@ -77,8 +77,8 @@ def middle_motor_control(dr, duration=10, delay=0.0000001):
         check = safe_sensors["2.2"]
 
     for i in range(duration):
-        if check.is_active:
-            break
+        # if check.is_active:
+        #     break
         middle_motor["PL"].on()
         sleep(delay)
         middle_motor["PL"].off()
@@ -94,8 +94,8 @@ def side_motor_control(dr, duration=10, delay=0.0000001):
         check = safe_sensors["3.2"]
 
     for i in range(duration):
-        if check.is_active:
-            break
+        # if check.is_active:
+        #     break
         side_motor["PL"].on()
         sleep(delay)
         side_motor["PL"].off()
@@ -109,10 +109,7 @@ def construct_calibration():
 
 
 print("start...")
-
-while True:
-    print(str(safe_sensors['1.1'].is_active))
-    sleep(0.1)
+middle_motor_control(1, 100)
 
 # top_distance = read_distance_sensor("top_sensor")
 # back_distance = read_distance_sensor("back_sensor")
