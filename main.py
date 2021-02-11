@@ -47,7 +47,7 @@ safe_sensors = {
 #     return sensor[index].distance * 100
 
 
-def top_motor_control(dr, duration=10, delay=0.0000001):
+def top_motor_control(dr, duration=10, delay=0.000001):
     check = safe_sensors["1.1"]
     if dr == 1:
         top_motor["DR1"].on()
@@ -68,7 +68,7 @@ def top_motor_control(dr, duration=10, delay=0.0000001):
         sleep(delay)
 
 
-def middle_motor_control(dr, duration=10, delay=0.0000001):
+def middle_motor_control(dr, duration=10, delay=0.000001):
     check = safe_sensors["2.1"]
     if dr == 1:
         middle_motor["DR"].on()
@@ -85,7 +85,7 @@ def middle_motor_control(dr, duration=10, delay=0.0000001):
         sleep(delay)
 
 
-def side_motor_control(dr, duration=10, delay=0.0000001):
+def side_motor_control(dr, duration=10, delay=0.000001):
     check = safe_sensors["3.1"]
     if dr == 1:
         side_motor["DR"].on()
