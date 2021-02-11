@@ -1,6 +1,6 @@
 from gpiozero import OutputDevice
 from gpiozero import DistanceSensor
-from gpiozero import DigitalInputDevice
+from gpiozero import Button
 from time import sleep
 
 direct_width = 600
@@ -26,12 +26,12 @@ side_motor = {
 }
 
 safe_sensors = {
-    "1.1": DigitalInputDevice(5),
-    "1.2": DigitalInputDevice(6),
-    "2.1": DigitalInputDevice(12),
-    "2.2": DigitalInputDevice(13),
-    "3.1": DigitalInputDevice(19),
-    "3.2": DigitalInputDevice(20)
+    "1.1": Button(5),
+    "1.2": Button(6),
+    "2.1": Button(12),
+    "2.2": Button(13),
+    "3.1": Button(19),
+    "3.2": Button(20)
 }
 
 
@@ -111,8 +111,8 @@ def construct_calibration():
 print("start...")
 
 while True:
-    print(str(safe_sensors['1.2'].is_active))
-    sleep(0.5)
+    print(str(safe_sensors['1.1'].is_active))
+    sleep(0.1)
 
 # top_distance = read_distance_sensor("top_sensor")
 # back_distance = read_distance_sensor("back_sensor")
