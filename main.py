@@ -112,6 +112,7 @@ print("start...")
 
 while True:
     print(str(safe_sensors['1.2'].is_active))
+    sleep(0.5)
 
 # top_distance = read_distance_sensor("top_sensor")
 # back_distance = read_distance_sensor("back_sensor")
