@@ -111,7 +111,7 @@ def construct_calibration():
 print("start...")
 
 while True:
-    print(str(safe_sensors['1.1'].is_active))
+    print(str(safe_sensors['1.2'].is_active))
 
 # top_distance = read_distance_sensor("top_sensor")
 # back_distance = read_distance_sensor("back_sensor")
