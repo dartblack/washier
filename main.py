@@ -78,8 +78,8 @@ def middle_motor_control(dr, duration=10, delay=0.001):
 
     for i in range(duration):
         print(str(check.is_active))
-        if check.is_active:
-            break
+        # if check.is_active:
+        #     break
         middle_motor["PL"].on()
         sleep(delay)
         middle_motor["PL"].off()
