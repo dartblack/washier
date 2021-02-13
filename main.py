@@ -94,7 +94,7 @@ def side_motor_control(dr, duration=10, delay=0.001):
         side_motor["DR"].off()
         check = safe_sensors["2.2"]
 
-    for i in range(duration):
+    for i in range(0, duration):
         if check.is_active:
             break
         side_motor["PL"].on()
