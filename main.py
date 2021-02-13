@@ -109,7 +109,8 @@ def construct_calibration():
 
 
 print("start...")
-middle_motor_control(2, 100000, 0.001)
+while True:
+    print(str(safe_sensors['1.1'].is_active))
 
 # top_distance = read_distance_sensor("top_sensor")
 # back_distance = read_distance_sensor("back_sensor")
