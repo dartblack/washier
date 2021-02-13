@@ -58,8 +58,8 @@ def top_motor_control(dr, duration=10, delay=0.001):
         check = safe_sensors["1.2"]
 
     for i in range(duration):
-        # if check.is_active:
-        #     break
+        if check.is_active:
+            break
         top_motor["PL1"].on()
         top_motor["PL2"].on()
         sleep(delay)
@@ -77,6 +77,7 @@ def middle_motor_control(dr, duration=10, delay=0.001):
         check = safe_sensors["3.2"]
 
     for i in range(duration):
+        print(str(check.is_active))
         if check.is_active:
             break
         middle_motor["PL"].on()
