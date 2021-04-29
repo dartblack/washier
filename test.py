@@ -4,11 +4,11 @@ from gpiozero import Button
 from Motors.Motor import Motor
 from Motors.TopMotor import TopMotor
 
-move_forward_button = Button(10)
-move_back_button = Button(11)
+move_forward_button = Button(19)
+move_back_button = Button(26)
 
-move_left_button = Button(12)
-move_right_button = Button(13)
+move_left_button = Button(20)
+move_right_button = Button(21)
 
 top_motor = {
     "DR1": OutputDevice(14),
