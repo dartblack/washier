@@ -25,6 +25,7 @@ middle_motor = {
 top_motor_obj = TopMotor(top_motor)
 middle_motor_obj = Motor(middle_motor)
 
+print("Start...")
 while True:
     if move_forward_button.is_active:
         top_motor_obj.direction(1)
