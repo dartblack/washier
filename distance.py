@@ -1,7 +1,8 @@
 from gpiozero import DigitalOutputDevice
 from gpiozero import DigitalInputDevice
 import time
-from Sensors import DistanceSensor
+
+from Sensors.DistanceSensor import Distance
 
 trigger = DigitalOutputDevice(20)
 
@@ -13,7 +14,7 @@ echos = {
     "1.5": DigitalInputDevice(12),
     "1.6": DigitalInputDevice(2)
 }
-distanceSensors = DistanceSensor.Distance(trigger, echos)
+distanceSensors = Distance(trigger, echos)
 
 print("Start")
 while True:
