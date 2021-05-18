@@ -28,6 +28,7 @@ class Distance:
 
         end = True
         while end:
+            end = True
             for k in self.keys:
                 if self.echos[k].value == 0:
                     end = False
@@ -35,6 +36,7 @@ class Distance:
 
         end = True
         while end:
+            end = True
             for k in self.keys:
                 if self.echos[k].value == 1:
                     end = False
