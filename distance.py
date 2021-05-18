@@ -1,18 +1,18 @@
 from gpiozero import DigitalOutputDevice
-from gpiozero import DigitalInputDevice
+from gpiozero import InputDevice
 import time
 
 from Sensors.DistanceSensor import Distance
 
-trigger = DigitalOutputDevice(20)
+trigger = DigitalOutputDevice(6)
 
 echos = {
-    "1.1": DigitalInputDevice(5),
-    "1.2": DigitalInputDevice(9),
-    "1.3": DigitalInputDevice(27),
-    "1.4": DigitalInputDevice(16),
-    "1.5": DigitalInputDevice(12),
-    "1.6": DigitalInputDevice(2)
+    "1.1": InputDevice(5),
+    "1.2": InputDevice(9),
+    "1.3": InputDevice(27),
+    "1.4": InputDevice(16),
+    "1.5": InputDevice(12),
+    "1.6": InputDevice(2)
 }
 distanceSensors = Distance(trigger, echos)
 
