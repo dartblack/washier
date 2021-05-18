@@ -34,17 +34,18 @@ safe_sensors = {
     "3.2": DigitalInputDevice(20)
 }
 
+sensor = {
+    "1.1": DistanceSensor(echo=5, trigger=6, max_distance=4),
+    "1.2": DistanceSensor(echo=9, trigger=11, max_distance=4),
+    "1.3": DistanceSensor(echo=27, trigger=10, max_distance=4),
+    "1.4": DistanceSensor(echo=16, trigger=20, max_distance=4),
+    "1.5": DistanceSensor(echo=12, trigger=7, max_distance=4),
+    "1.6": DistanceSensor(echo=2, trigger=3, max_distance=4)
+}
 
-# sensor = {
-#     "top_sensor": DistanceSensor(echo=27, trigger=22, queue_len=30, max_distance=4),
-#     "back_sensor": DistanceSensor(echo=23, trigger=24, queue_len=30, max_distance=4),
-#     "left_sensor": DistanceSensor(echo=5, trigger=6, queue_len=30, max_distance=4),
-#     "right_sensor": DistanceSensor(echo=13, trigger=19, queue_len=30, max_distance=4)
-# }
-#
-#
-# def read_distance_sensor(index):
-#     return sensor[index].distance * 100
+
+def read_distance_sensor(index):
+    return sensor[index].distance
 
 
 def top_motor_control(dr, duration=10, delay=0.001):
@@ -112,6 +113,9 @@ def construct_calibration():
 
 
 print("start...")
+while True:
+    print(str(read_distance_sensor("1.1")))
+
 top_motor_control(2, 28000, 0.0006)
 
 # top_distance = read_distance_sensor("top_sensor")
