@@ -1,6 +1,7 @@
 from gpiozero import DigitalOutputDevice
 from gpiozero import DigitalInputDevice
 import time
+from Sensors import DistanceSensor
 
 trigger = DigitalOutputDevice(20)
 
@@ -12,67 +13,10 @@ echos = {
     "1.5": DigitalInputDevice(12),
     "1.6": DigitalInputDevice(2)
 }
+distanceSensors = DistanceSensor.Distance(trigger, echos)
 
-
-def distance():
-    trigger.on()
-    time.sleep(0.00001)
-    trigger.off()
-
-    startTime = {
-        "1.1": 0,
-        "1.2": 0,
-        "1.3": 0,
-        "1.4": 0,
-        "1.5": 0,
-        "1.6": 0
-    }
-    stopTime = {
-        "1.1": 0,
-        "1.2": 0,
-        "1.3": 0,
-        "1.4": 0,
-        "1.5": 0,
-        "1.6": 0
-    }
-
-    distances = {
-        "1.1": 0,
-        "1.2": 0,
-        "1.3": 0,
-        "1.4": 0,
-        "1.5": 0,
-        "1.6": 0
-    }
-
-    # save StartTime
-    count = len(echos)
-    while True:
-        for k in echos.keys():
-            if echos[k].value == 0 and startTime[k] == 0:
-                startTime[k] = time.time()
-                count = count - 1
-        if count == 0:
-            break
-
-    count = len(echos)
-    while True:
-        for k in echos.keys():
-            if echos[k].value == 1 and startTime[k] == 0:
-                stopTime[k] = time.time()
-                count = count - 1
-        if count == 0:
-            break
-
-    for k in stopTime.keys():
-        TimeElapsed = stopTime[k] - startTime[k]
-        distances[k] = (TimeElapsed * 34300) / 2
-
-    return distances
-
-
+print("Start")
 while True:
-    dists = distance()
-    for key in echos.keys():
-        print("Measured Distance = ", dists[key], "cm | Sensor: ", key)
+    dists = distanceSensors.get_distances()
+    print(dists)
     time.sleep(1)
