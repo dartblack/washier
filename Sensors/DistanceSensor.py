@@ -28,18 +28,18 @@ class Distance:
 
         end = True
         while end:
-            end = True
+            end = False
             for k in self.keys:
                 if self.echos[k].value == 0:
-                    end = False
+                    end = True
                     self.startTime[k] = time.time()
 
         end = True
         while end:
-            end = True
+            end = False
             for k in self.keys:
                 if self.echos[k].value == 1:
-                    end = False
+                    end = True
                     self.stopTime[k] = time.time()
 
         for k in self.keys:
