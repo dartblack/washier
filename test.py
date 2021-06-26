@@ -8,4 +8,4 @@ while True:
     rcv = port.readline()
     if rcv:
         print(rcv)
-    time.sleep(3)
+    time.sleep(4)
